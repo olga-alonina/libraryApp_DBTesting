@@ -3,7 +3,9 @@ package com.cydeo.steps;
 import com.cydeo.pages.DashBoardPage;
 import com.cydeo.pages.LoginPage;
 import com.cydeo.utility.BrowserUtil;
+import com.cydeo.utility.DB_Util;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class DashboardStepDefs
@@ -33,4 +35,16 @@ public class DashboardStepDefs
     }
 
 
+    @Then("the informations should be same with database")
+    public void the_Informations_Should_Be_Same_With_Database() {
+// make a conn
+        DB_Util. createConnection();
+       //run query
+        DB_Util.runQuery("");
+       //store data
+
+       //make assertion
+
+       //close the connection
+    }
 }
