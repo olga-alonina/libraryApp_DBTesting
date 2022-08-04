@@ -15,6 +15,9 @@ public class BookPage extends BasePage {
     @FindBy(xpath = "//input[@type='search']")
     public WebElement search;
 
+    @FindBy(css = "[class=\"row\"] [class=\"form-control\"]")
+    public List<WebElement>all_Info_About_Book;
+
     @FindBy(id = "book_categories")
     public WebElement mainCategoryElement;
 
@@ -24,9 +27,6 @@ public class BookPage extends BasePage {
 
     @FindBy(xpath = "(//input[@type='text'])[4]")
     public WebElement author;
-
-
-
 
     @FindBy(name = "year")
     public WebElement year;

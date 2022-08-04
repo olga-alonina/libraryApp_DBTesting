@@ -7,6 +7,7 @@ import com.cydeo.utility.DB_Util;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 public class DashboardStepDefs
 {
@@ -39,12 +40,35 @@ public class DashboardStepDefs
     public void the_Informations_Should_Be_Same_With_Database() {
 // make a conn
         DB_Util. createConnection();
+        //users
+        System.out.println("Users");
        //run query
-        DB_Util.runQuery("");
+        DB_Util.runQuery("select count(*) from users;");
        //store data
+String expectedUsers = DB_Util.getFirstRowFirstColumn();
 
-       //make assertion
+       //make assertion users
+        Assert.assertEquals(expectedUsers, actualUserNumbers);
+
+        //book
+        System.out.println("Books");
+                 //run query
+        DB_Util.runQuery("select count(*) from books;");
+        //store data
+        String expectedBooks = DB_Util.getFirstRowFirstColumn();
+        //make assertion users
+        Assert.assertEquals(expectedBooks, actualBookNumbers);
+
+        //borrowed book
+        System.out.println("Borrowed Books");
+        //run query
+        DB_Util.runQuery("select count(*) from book_borrow where is_returned = 0;;");
+        //store data
+        String expectedBorBooks= DB_Util.getFirstRowFirstColumn();
+        //make assertion users
+        Assert.assertEquals(expectedBorBooks, actualBorrowedBookNumbers);
 
        //close the connection
+        DB_Util.destroy();
     }
 }
